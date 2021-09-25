@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-setup(name='clog',
+setup(name='clogg',
       version='1.0.0',
       description='A simple python module for fast and efficient logging',
       url='https://github.com/ChecksumDev/clogpy',
