@@ -2,6 +2,7 @@ from sys import stdout
 
 __all__ = ['Logger']
 
+
 class Colors(object):
     RED = "\033[0;31m"
     LIGHT_RED = "\033[1;31m"
@@ -27,6 +28,8 @@ class Logger:
     def __init__(self, **kwargs):
         self.logger_name = kwargs.get("name", "Clog")
         self.logger_level = kwargs.get("level", Levels.INFO)
+        self.logFile = kwargs.get("logFile", False)
+        self.logFileLevel = kwargs.get("logFileLevel", Levels.INFO)
         return
 
     def __log(self, **kwargs) -> None:
@@ -37,6 +40,17 @@ class Logger:
         if level >= self.logger_level:
             stdout.write(f"{color}[{self.logger_name}] {msg}{Colors.END}\n")
             stdout.flush()
+
+        if self.logFile:
+            if level >= self.logFileLevel:
+                self.__log_to_file(msg=msg)
+        return
+
+    def __log_to_file(self, kwargs) -> None:
+        msg = kwargs.get("msg", "")
+
+        with open(f"{self.logger_name}.log", "a") as f:
+            f.write(f"[{self.logger_name}] {msg}\n")
         return
 
     """Change logger options while initialized"""
