@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(name='clogg',
-      version='1.0.1',
+      version='1.1.1',
       description='A simple python module for fast and efficient logging',
       url='https://github.com/ChecksumDev/clogpy',
       author='ChecksumDev',

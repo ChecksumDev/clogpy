@@ -46,7 +46,7 @@ class Logger:
                 self.__log_to_file(msg=msg)
         return
 
-    def __log_to_file(self, kwargs) -> None:
+    def __log_to_file(self, **kwargs) -> None:
         msg = kwargs.get("msg", "")
 
         with open(f"{self.logger_name}.log", "a") as f:
