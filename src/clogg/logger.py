@@ -41,9 +41,8 @@ class Logger:
             stdout.write(f"{color}[{self.logger_name}] {msg}{Colors.END}\n")
             stdout.flush()
 
-        if self.logFile:
-            if level >= self.logFileLevel:
-                self.__log_to_file(msg=msg)
+        if self.logFile and level >= self.logFileLevel:
+            self.__log_to_file(msg=msg)
         return
 
     def __log_to_file(self, **kwargs) -> None:
